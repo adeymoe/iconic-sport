@@ -1,0 +1,28 @@
+<%- include('partials/header') -%>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<posts.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5" style="width: fit-content;">
+            <h2><%= posts[i].title %></h2>
+            <a href="/post/<%= posts[i]._id%>">
+              <img class="img-fluid" src="<%= posts[i].image%>" style="width: 1000px;">
+            </a>
+            <form
+          class="col-1"
+          action="/post/likePost/<%= posts[i]._id %>?_method=PUT"
+          method="POST"
+        >
+          <button class="btn btn-primary fa fa-heart" type="submit"></button>
+        </form>
+        <h3 class="col-3">Likes: <%= posts[i].likes %></h3>
+        <h6>Creator: <%= user.userName %></h6>
+        <p> <%= posts[i].caption %></p>
+        
+          </li>
+        <% } %>
+        
+        </ul>
+    </div>
+  </div>  
+<%- include('partials/footer') -%>
